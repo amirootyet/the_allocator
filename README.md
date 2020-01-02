@@ -90,7 +90,7 @@ The allocator will then automatically create clones of these TAs and assign them
 python allocator.py -f preferences.csv
 ```
 
-![preferences](/tree/master/screenshots/nothing_to_do.jpg?raw=true)
+![preferences](/screenshots/nothing_to_do.jpg?raw=true)
 
 ```sh
 python allocator.py -f preferences.csv --busybees
