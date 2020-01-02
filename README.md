@@ -29,15 +29,16 @@ This is a linear sum assignment problem that can be interpreted as minimum weigh
 
 The problem instance is thus formulated as a cost matrix C, such that each element $C[x,y]$ in the cost matrix represents the cost of assigning TA 'x' ('worker') a lab section 'y' ('job'). The optimal assignment to this problem has the minimal cost denoted by:
 
-$$
-\min \sum_x \sum_y C_{x,y} X_{x,y}
-$$
+![preferences](/screenshots/function.png?raw=true)
+
+
+A naive way of solving this problem would be to bruteforce all possible combinations of assignments of TAs to lab sections / time slots and then calculating and comparing the associated costs. For an <em> n x n </em> assignment, there are <em> n </em> choices for the first assignment, <em> n-1 </em> for the next, resulting in an exponential complexity! The Hungarian algorithm allows us to solve this problem in polynomial time.
 
 
 ## Features
 	- minimum cost assignment in polynomial time.
 	- one-to-one mapping of labs / sections to TAs.
-	- abililty to handle rectangular matrices, $N x M$
+	- abililty to handle rectangular matrices, <em>N x M </em>
 	- finds "busy bees" or TAs with 'conflicts' marked
 		for more half of the total time slots.
 
@@ -73,7 +74,7 @@ COSTS = {
 }
 ```
 
-TAs can be assigned two lab sections instead of one by modifying the following list:
+TAs can be assigned two lab sections instead of one by modifying (uncomment and add TAs) the following set:
 
 ```sh
 TAs_WITH_TWO_LABS = (
@@ -96,13 +97,28 @@ python allocator.py -f preferences.csv
 python allocator.py -f preferences.csv --busybees
 ```
 
+![preferences](/screenshots/busy_bees.jpg?raw=true)
+
 ```sh
 python allocator.py -f preferences.csv --costmatrix
 ```
 
+![preferences](/screenshots/cost_matrix.jpg?raw=true)
+
 ```sh
 python allocator.py -f preferences.csv --assign
 ```
+
+![preferences](/screenshots/ta_assignment.jpg?raw=true)
+
+
+## References
+
+	- https://en.wikipedia.org/wiki/Hungarian_algorithm
+	- http://csclab.murraystate.edu/~bob.pilgrim/445/munkres.html
+	- https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.linear_sum_assignment.html
+	- https://github.com/bmc/munkres
+	- https://www.youtube.com/watch?v=cQ5MsiGaDY8
 
 License
 ----

@@ -67,6 +67,7 @@ def build_cost_matrix(preference_dictionary):
 
 
 def main():
+
     BANNER = '''
     ████████╗██╗  ██╗███████╗                                                  
     ╚══██╔══╝██║  ██║██╔════╝                                                  
@@ -83,11 +84,12 @@ def main():
     ╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═                                            
     '''
     print(BANNER)
+
     ########################################
     # Arguments to the command-line utility
     parser = argparse.ArgumentParser(
         description='A utility to manage CSE 231 TA assignment with the Munkres algorithm.')
-    parser.add_argument("-a", "--assign", help='Read the preferences CSV and create assignments.', action='store_true')
+    parser.add_argument("-a", "--assign", help='Find optimal (miminum cost) TA assignments.', action='store_true')
     parser.add_argument("-b", "--busybees", help="Find TAs that have a conflict for more than half"
                                                  "of the total work slots.", action='store_true')
     parser.add_argument("-f", "--filename", required=True, help="CSV file containing TA preferences.")
