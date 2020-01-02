@@ -11,8 +11,8 @@ COSTS = {
 
 # The TAs below will each be assigned 2 slots/labs.
 TAs_WITH_TWO_LABS = (
-    #    'tarasov1@msu.edu',
-    #    'castrog4@msu.edu',
+    #    'TA4@msu.edu',
+    #    'TA6@msu.edu',
 )
 
 
@@ -131,7 +131,10 @@ def main():
             print('{:<17s} | {:<25s} -> {:<4d}'.format(assistants[row], time_slots[col],
                                                        cost))  # Display the assignment result.
         for k, v in COSTS.items():
-            print(str(k) + " = " + str(v), sep="")
+            print(str(k) + " = " + str(v), end="; ")
+        print("\nTimeslots: {}; TAs: {}".format(len(time_slots), len(assistants)))
+    else:
+        print("Nothing to do. See --help")
 
     fp.close()  # Close the CSV file before exit.
 

@@ -21,7 +21,7 @@ usage: allocator.py [-h] [-a] [-b] -f FILENAME [-c]
 
 
 
-This command-line utility was written to tackle the problem of assigning TAs to CSE 231 lab sections at Michigan State University. The Allocator expects a CSV with TA preferences as input and produces lab assignments as output.
+This command-line utility was written to tackle the problem of assigning TAs to CSE 231 lab sections at Michigan State University according to preferences. The Allocator expects a CSV with TA preferences as input and produces lab assignments as output.
 
 ## Description
 
@@ -30,14 +30,22 @@ This is a linear sum assignment problem that can be interpreted as minimum weigh
 The problem instance is thus formulated as a cost matrix C, such that each element $C[x,y]$ in the cost matrix represents the cost of assigning TA 'x' ('worker') a lab section 'y' ('job'). The optimal assignment to this problem has the minimal cost denoted by:
 
 $$
-\min \sum_i \sum_j C_{i,j} X_{i,j}
+\min \sum_x \sum_y C_{x,y} X_{x,y}
 $$
 
 
 ## Features
 	- minimum cost assignment in polynomial time.
 	- one-to-one mapping of labs / sections to TAs.
-	-  abililty to handle rectangular matrices, $N x M$
+	- abililty to handle rectangular matrices, $N x M$
+	- finds "busy bees" or TAs with 'conflicts' marked
+		for more half of the total time slots.
+
+## Installation
+
+```sh
+git clone https://github.com/amirootyet/the_allocator.git
+```
 
 ## Usage
 
@@ -54,3 +62,49 @@ optional arguments:
                         CSV file containing TA preferences.
   -c, --costmatrix      Build and display the TA cost matrix.
 ```
+
+Cost are hard-coded in `allocator.py` and can be modified:
+
+```sh
+COSTS = {
+    'Preferred': 1,
+    'Available but not preferred': 5,
+    'Conflict': 100
+}
+```
+
+TAs can be assigned two lab sections instead of one by modifying the following list:
+
+```sh
+TAs_WITH_TWO_LABS = (
+#        'TA1',
+#        'TAs',
+)
+```
+
+The allocator will then automatically create clones of these TAs and assign them sections. The clones are marked by asterisk (\*).
+
+## Examples
+
+```sh
+python allocator.py -f preferences.csv
+```
+
+![preferences](/screenshots/preferences.jpg?raw=true)
+
+```sh
+python allocator.py -f preferences.csv --busybees
+```
+
+```sh
+python allocator.py -f preferences.csv --costmatrix
+```
+
+```sh
+python allocator.py -f preferences.csv --assign
+```
+
+License
+----
+
+MIT
