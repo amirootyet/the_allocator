@@ -27,7 +27,7 @@ This command-line utility was written to tackle the problem of assigning TAs to 
 
 This is a linear sum assignment problem that can be interpreted as minimum weight matching in a bipartite graph where <em> N </em> workers need to be assigned <em> M </em> jobs while minimizing cost. The objective function is, hence, a cost function that needs to be minimized while completing a one-to-one assignment of each TA to a lab section. The cost associated with assigning a TA a lab section depends on the TA's preferences indicated in the CSV file. For instance, a high cost is incurred while assigning a TA a lab section that they have marked as as 'conflict.'
 
-The problem instance is thus formulated as a cost matrix C, such that each element $C[x,y]$ in the cost matrix represents the cost of assigning TA <em> x </em> ('worker') a lab section <em> y </em> ('job'). The optimal assignment to this problem has the minimal cost denoted by:
+The problem instance is thus formulated as a cost matrix C, such that each element <em> C[x,y] </em> in the cost matrix represents the cost of assigning TA <em> x </em> ('worker') a lab section <em> y </em> ('job'). The optimal assignment to this problem has the minimal cost denoted by:
 
 ![preferences](/screenshots/function.png?raw=true)
 
